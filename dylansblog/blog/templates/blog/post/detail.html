@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% load bulma_tags %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block hero_title %}
+    <h1 class="title is-2">{{ post.title }}</h1>
+    <p class="subtitle is-italic">
+        Published {{ post.publish }} by {{ post.author.username }}
+    </p>
+{% endblock %}
+{% block content %}
+    <div class="box">
+        <div class="block content indented">
+            {{ post.body|linebreaks }}
+        </div>
+    </div>
+{% endblock %}
