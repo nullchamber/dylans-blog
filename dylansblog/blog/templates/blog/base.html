@@ -1,0 +1,104 @@
+{% load static bulma_tags %}
+{% block css %}
+    {% font_awesome %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% block extra_css %}
+        <style>
+            .indented {
+                text-indent: 30px;
+            }
+        </style>
+    {% endblock %}
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block hero %}
+    <section class="hero is-primary is-small">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="{% url 'blog:post_list' %}">
+                            <img src="{% static 'img/logo.png' %}" alt="logo" width="112" height="28">
+                        </a>
+                        <div class="navbar-burger" data-target="navbarMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="navbar-menu" id="navbarMenu">
+                        <div class="navbar-end">
+                            <a class="navbar-item" href="{% url 'blog:post_list' %}">Posts</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="hero-foot">
+            <div class="container">
+                <div class="content has-text-centered">
+                    {% block hero_title %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content_area %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-9">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                <div class="column is-3">
+                    <aside class="menu box">
+                        {% block sidenav %}
+                        {% endblock %}
+                    </aside>
+                    <hr>
+                    <aside class="menu box">
+                        <h4 class="menu-label">Popular Posts</h4>
+                        <ul class="menu-list"></ul>
+                        <br>
+                        <p class="has-text-weight-semibold is-italic">
+                            Home to 0 publications thus far!
+                        </p>
+                    </aside>
+                    <hr>
+                    <div class="buttons">
+                        <button class="button is-block is-fullwidth is-light is-outlined">Subscribe to RSS Feed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block modal %}
+{% endblock %}
+{% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>This blog</strong> built by <a href="https://github.com/nullchamber">NullChamber DEV</a>.
+                </p>
+                <p>
+                    Source code licensed by <a href="https://opensource.org/licenses/mit-license.php">MIT License</a>.
+                </p>
+                <p>
+                    &copy; 2024
+                </p>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+{% block javascript %}
+    <script src="//cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script>
+        const csrftoken = Cookies.get('csrftoken');
+    </script>
+    {% block extra_javascript %}{% endblock %}
+{% endblock %}
